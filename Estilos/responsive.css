@@ -1,0 +1,969 @@
+/* ============================================
+   responsive.css
+   ============================================
+   TABLA DE CONTENIDO
+   ============================================
+   1. Breakpoints Base
+      1.1 Teléfonos pequeños 320px – 480px
+      1.2 Teléfonos medianos 481px – 767px
+      1.3 Tablets 768px – 1023px
+      1.4 Laptops / Escritorios pequeños 1024px – 1279px
+      1.5 Escritorios grandes 1280px – 1439px
+      1.6 Pantallas extra grandes 1440px en adelante
+
+   2. Estilos por Breakpoint
+      2.1 Teléfonos pequeños (≤ 480px)
+      2.2 Teléfonos medianos (481px – 767px)
+      2.3 Tablets (768px – 1023px)
+      2.4 Laptops (1024px – 1279px)
+      2.5 Escritorios grandes (1280px – 1439px)
+      2.6 Pantallas extra grandes (≥ 1440px)
+
+   3. Estilos Adicionales
+      3.1 Orientación Landscape
+      3.2 Alta densidad (Retina)
+      3.3 Prefiere movimiento reducido
+      3.4 Modo oscuro/claro específicos
+
+   4. FIX: Menú Hamburguesa
+      4.1 Visibilidad del menú
+      4.2 Z-index
+      4.3 Ajustes móviles
+
+   ============================================ */
+
+/* ============================================ */
+/* ========== 1. BREAKPOINTS BASE ========== */
+/* ============================================ */
+
+/* 1.1 Teléfonos pequeños: 320px – 480px */
+/* 1.2 Teléfonos medianos: 481px – 767px */
+/* 1.3 Tablets: 768px – 1023px */
+/* 1.4 Laptops / Escritorios pequeños: 1024px – 1279px */
+/* 1.5 Escritorios grandes: 1280px – 1439px */
+/* 1.6 Pantallas extra grandes: 1440px en adelante */
+
+
+/* 2.1 TELÉFONOS PEQUEÑOS*/
+/* ========== 320px – 480px ========== */
+/* ============================================ */
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  /* ----- HEADER ----- */
+  .header {
+    padding: 0;
+  }
+  
+  .header-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "menu logo avatar"
+      "buttons buttons buttons"
+      "nav nav nav";
+    gap: 0.3rem;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .list-container {
+    grid-area: menu;
+  }
+  
+  .more-button {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .menu-icon-wrapper {
+    width: 16px;
+    height: 16px;
+  }
+
+  .logo {
+    grid-area: logo;
+    text-align: center;
+    font-size: 0.9rem;
+    justify-self: center;
+  }
+
+  .avatar-wrap {
+    grid-area: avatar;
+    justify-self: end;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* ----- NAVEGACIÓN ----- */
+  .nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: space-around;
+    gap: 0.2rem;
+    width: 100%;
+  }
+  
+  .nav-link {
+    flex: 1;
+    text-align: center;
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+  }
+
+  /* ----- BOTONES ----- */
+  .btn-perfil,
+  .btn-login,
+  .btn-logout {
+    grid-area: buttons;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.65rem;
+    width: calc(50% - 4px);
+    justify-content: center;
+  }
+  
+  .btn-perfil i,
+  .btn-login i,
+  .btn-logout i {
+    font-size: 0.7rem;
+  }
+
+  /* ----- STATUS DISPLAY ----- */
+  .status-display {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    gap: 4px;
+  }
+  
+  .status-display i {
+    font-size: 0.7rem;
+  }
+
+  /* ----- BODY ----- */
+  body {
+    padding-top: 52px;
+  }
+
+  /* ----- HERO ----- */
+  .hero {
+    padding: 1rem 0.8rem !important;
+  }
+  
+  .hero-label {
+    font-size: 0.6rem !important;
+    letter-spacing: 2px !important;
+  }
+  
+  .hero-title {
+    font-size: 1.4rem !important;
+    line-height: 1.25 !important;
+    margin-top: 0.3rem !important;
+  }
+  
+  .hero-title em {
+    border-bottom: 2px solid var(--accent) !important;
+    padding-bottom: 2px !important;
+  }
+
+  /* ----- TOOLBAR ----- */
+  .toolbar {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .search-wrap {
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .search-wrap i {
+    font-size: 0.8rem;
+  }
+  
+  .search-wrap input {
+    font-size: 0.7rem;
+  }
+  
+  .filter {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* ----- GALERÍA ----- */
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+  
+  .card img {
+    height: 160px;
+  }
+  
+  .card-content {
+    padding: 0.8rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .card-content p {
+    font-size: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .price-rating {
+    margin-bottom: 0.6rem;
+  }
+  
+  .price {
+    font-size: 1.1rem;
+  }
+  
+  .rating {
+    font-size: 0.75rem;
+  }
+  
+  .btn-add-to-cart {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.2rem;
+  }
+  
+  .footer-logo p {
+    font-size: 0.7rem;
+  }
+  
+  .footer-links h3,
+  .footer-social h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-links a,
+  .footer-social a {
+    font-size: 0.75rem;
+    justify-content: center;
+    margin: 0.3rem 0;
+  }
+  
+  .footer-map-col h3 {
+    font-size: 0.9rem;
+  }
+  
+  .footer-map-wrap {
+    height: 120px;
+  }
+  
+  .map-hint {
+    font-size: 0.6rem;
+  }
+  
+  .footer-bottom {
+    padding: 0.6rem;
+    font-size: 0.6rem;
+  }
+
+  /* ----- SIDEBAR ----- */
+  .sidebar {
+    width: 90%;
+    right: -90%;
+  }
+  
+  .cart-sidebar {
+    width: 90%;
+    right: -90%;
+  }
+  
+  .sidebar-header h3 {
+    font-size: 1rem;
+  }
+  
+  .settings-label {
+    font-size: 0.8rem;
+  }
+  
+  .settings-label i {
+    font-size: 0.9rem;
+  }
+
+  /* ----- MODAL LOGIN ----- */
+  .login-modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .login-modal-header h3 {
+    font-size: 1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.75rem;
+  }
+  
+  .form-group input {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .btn-login-submit {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+  
+  .login-demo-hint {
+    font-size: 0.65rem;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 2.2 TELÉFONOS MEDIANOS ========== */
+/* ========== 481px – 767px ========== */
+/* ============================================ */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  /* ----- HEADER ----- */
+  .header-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "menu logo avatar"
+      "buttons buttons buttons"
+      "nav nav nav";
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .avatar-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* ----- NAVEGACIÓN ----- */
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 0.35rem 0;
+  }
+
+  /* ----- BOTONES ----- */
+  .btn-perfil,
+  .btn-login,
+  .btn-logout {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  body {
+    padding-top: 58px;
+  }
+
+  /* ----- HERO ----- */
+  .hero {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .hero-label {
+    font-size: 0.7rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+
+  /* ----- TOOLBAR ----- */
+  .toolbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .search-wrap {
+    flex: 2;
+    min-width: 150px;
+  }
+  
+  .filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  /* ----- GALERÍA ----- */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .card img {
+    height: 170px;
+  }
+  
+  .card-content {
+    padding: 0.9rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1rem;
+  }
+  
+  .price {
+    font-size: 1.1rem;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  
+  .footer-map-col {
+    grid-column: 1 / -1;
+  }
+  
+  .footer-links a,
+  .footer-social a {
+    justify-content: flex-start;
+  }
+
+  /* ----- SIDEBAR ----- */
+  .sidebar {
+    width: 70%;
+    right: -70%;
+  }
+  
+  .cart-sidebar {
+    width: 70%;
+    right: -70%;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 2.3 TABLETS ========== */
+/* ========== 768px – 1023px ========== */
+/* ============================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+  /* ----- HEADER ----- */
+  .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.6rem 1.2rem;
+    gap: 0.8rem;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .avatar-wrap {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* ----- NAVEGACIÓN ----- */
+  .nav {
+    gap: 0.3rem;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.8rem;
+  }
+
+  /* ----- BOTONES ----- */
+  .btn-perfil,
+  .btn-login,
+  .btn-logout {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* ----- HERO ----- */
+  .hero {
+    padding: 2.5rem 1.5rem !important;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  /* ----- TOOLBAR ----- */
+  .toolbar {
+    flex-direction: row;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+  }
+  
+  .search-wrap {
+    flex: 3;
+  }
+  
+  .filter {
+    flex: 1;
+  }
+
+  /* ----- GALERÍA ----- */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .card img {
+    height: 200px;
+  }
+  
+  .card-content {
+    padding: 1.2rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.2rem;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1.8rem;
+  }
+  
+  .footer-map-col {
+    grid-column: 1 / -1;
+  }
+  
+  .footer-map-wrap {
+    height: 180px;
+  }
+
+  /* ----- SIDEBAR ----- */
+  .sidebar {
+    width: 320px;
+    right: -320px;
+  }
+  
+  .cart-sidebar {
+    width: 360px;
+    right: -360px;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 2.4 LAPTOPS / ESCRITORIOS PEQUEÑOS ========== */
+/* ========== 1024px – 1279px ========== */
+/* ============================================ */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  
+  /* ----- HEADER ----- */
+  .header-inner {
+    max-width: 1100px;
+    padding: 0.7rem 1.5rem;
+    gap: 1rem;
+  }
+  
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  /* ----- HERO ----- */
+  .hero {
+    padding: 3rem 2rem !important;
+  }
+  
+  .hero-title {
+    font-size: 3rem !important;
+  }
+
+  /* ----- GALERÍA ----- */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1100px;
+  }
+  
+  .card img {
+    height: 210px;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer-container {
+    max-width: 1100px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .footer-map-col {
+    grid-column: auto;
+  }
+
+  /* ----- TOOLBAR ----- */
+  .toolbar {
+    max-width: 1100px;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 2.5 ESCRITORIOS GRANDES ========== */
+/* ========== 1280px – 1439px ========== */
+/* ============================================ */
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  
+  /* ----- HEADER ----- */
+  .header-inner {
+    max-width: 1250px;
+    padding: 0.8rem 2rem;
+    gap: 1.2rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  /* ----- HERO ----- */
+  .hero {
+    padding: 4rem 2rem !important;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem !important;
+  }
+
+  /* ----- GALERÍA ----- */
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    padding: 2rem;
+    max-width: 1250px;
+  }
+  
+  .card img {
+    height: 220px;
+  }
+  
+  .card-content h3 {
+    font-size: 1.25rem;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer-container {
+    max-width: 1250px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  /* ----- TOOLBAR ----- */
+  .toolbar {
+    max-width: 1250px;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 2.6 PANTALLAS EXTRA GRANDES ========== */
+/* ========== 1440px en adelante ========== */
+/* ============================================ */
+
+@media (min-width: 1440px) {
+  
+  /* ----- HEADER ----- */
+  .header-inner {
+    max-width: 1400px;
+    padding: 0.9rem 2rem;
+    gap: 1.5rem;
+  }
+  
+  .logo {
+    font-size: 1.7rem;
+  }
+  
+  .avatar-wrap {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .more-button {
+    width: 52px;
+    height: 52px;
+  }
+
+  /* ----- NAVEGACIÓN ----- */
+  .nav-link {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  /* ----- BOTONES ----- */
+  .btn-perfil,
+  .btn-login,
+  .btn-logout {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  /* ----- HERO ----- */
+  .hero {
+    padding: 5rem 2rem !important;
+    max-width: 1400px;
+  }
+  
+  .hero-label {
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+  }
+  
+  .hero-title {
+    font-size: 4.5rem !important;
+  }
+
+  /* ----- TOOLBAR ----- */
+  .toolbar {
+    max-width: 1400px;
+    padding: 1rem 2rem;
+    gap: 1.2rem;
+  }
+  
+  .search-wrap {
+    padding: 0.7rem 1.2rem;
+  }
+  
+  .search-wrap input {
+    font-size: 1rem;
+  }
+  
+  .filter {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* ----- GALERÍA ----- */
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+  }
+  
+  .card img {
+    height: 250px;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.4rem;
+  }
+  
+  .card-content p {
+    font-size: 0.95rem;
+  }
+  
+  .price {
+    font-size: 1.4rem;
+  }
+  
+  .btn-add-to-cart {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer-container {
+    max-width: 1400px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    padding: 2.5rem;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.8rem;
+  }
+  
+  .footer-logo p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-links h3,
+  .footer-social h3 {
+    font-size: 1.2rem;
+  }
+  
+  .footer-links a,
+  .footer-social a {
+    font-size: 0.9rem;
+  }
+  
+  .footer-map-wrap {
+    height: 220px;
+  }
+  
+  .footer-bottom {
+    padding: 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 3. ESTILOS ADICIONALES ========== */
+/* ============================================ */
+
+/* ========== 3.1 ORIENTACIÓN LANDSCAPE ========== */
+@media (max-width: 900px) and (orientation: landscape) {
+  
+  .hero {
+    padding: 0.8rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card img {
+    height: 140px;
+  }
+  
+  .footer-map-wrap {
+    height: 100px;
+  }
+  
+  .sidebar,
+  .cart-sidebar {
+    width: 60%;
+    right: -60%;
+  }
+}
+
+/* ========== 3.2 ALTA DENSIDAD (RETINA) ========== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  
+  .logo {
+    font-weight: 800;
+  }
+  
+  .hero-label {
+    letter-spacing: 2px;
+  }
+  
+  .card {
+    border-width: 0.5px;
+  }
+}
+
+/* ========== 3.3 PREFIERE MOVIMIENTO REDUCIDO ========== */
+@media (prefers-reduced-motion: reduce) {
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .card:hover img {
+    transform: none;
+  }
+  
+  .header {
+    transition: none;
+  }
+}
+
+/* ========== 3.4 MODO OSCURO EN MÓVIL ========== */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+  
+  .card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .search-wrap {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ========== 3.5 MODO CLARO EN MÓVIL ========== */
+@media (max-width: 768px) and (prefers-color-scheme: light) {
+  
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .search-wrap {
+    background: white;
+  }
+}
+
+
+/* ============================================ */
+/* ========== 4. FIX: MENÚ HAMBURGUESA ========== */
+/* ============================================ */
+
+/* Asegurar que el menú esté por encima de todo */
+.more-button-list {
+  z-index: 1000 !important;
+}
+
+/* Asegurar que cuando está activo se vea correctamente */
+.list-container.active .more-button-list {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+}
+
+/* Ajustar posición en móvil para que no se salga de la pantalla */
+@media (max-width: 768px) {
+  .more-button-list {
+    left: -100px !important;
+    width: 200px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .more-button-list {
+    left: -120px !important;
+    width: 180px !important;
+  }
+}

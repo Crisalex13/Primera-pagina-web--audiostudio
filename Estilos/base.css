@@ -1,0 +1,110 @@
+/* ============================================
+   base.css
+   ============================================
+   TABLA DE CONTENIDO
+   ============================================
+   1. Variables CSS
+      1.1 Variables generales
+      1.2 Colores
+      1.3 Tipografías
+      1.4 Bordes y sombras
+
+   2. Modo Día (Light Mode)
+      2.1 Variables para tema claro
+
+   3. Estilos Globales
+      3.1 Reset básico
+      3.2 Box-sizing
+      3.3 Transiciones globales
+
+   4. Body
+      4.1 Configuración general
+      4.2 Tipografía principal
+      4.3 Fondo y colores
+
+   5. Scrollbar Personalizada
+      5.1 Scrollbar (Barra de desplazamiento )
+      5.2 Track (Pista )
+      5.3 Thumb (Pulgar )
+      5.4 Hover (flotar mouse)
+   ============================================ */
+
+
+/* ── 1. Variables CSS ── */
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a26;
+  --card: #16161f;
+  --card2: #1e1e2e;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #5fc234;
+  --accent2: #1198eb;
+  --text: #f0eff5;
+  --text2: #9896aa;
+  --text3: #6b6980;
+  --danger: #ff5c5c;
+  --success: #4ade80;
+  --warning: #f59e0b;
+  --r: 16px;
+  --rs: 10px;
+  --fd: 'Playfair Display', serif;
+  --fb: 'Inter', sans-serif;
+  --header-bg: rgba(10, 10, 15, 0.95);
+  --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── 2. Modo Día (Light Mode) ── */
+:root.light-mode {
+  --bg: #f8f9fa;
+  --bg2: #ffffff;
+  --bg3: #e9ecef;
+  --card: #ffffff;
+  --card2: #f8f9fa;
+  --border: rgba(0, 0, 0, 0.08);
+  --accent: #5fc234;
+  --accent2: #1198eb;
+  --text: #212529;
+  --text2: #6c757d;
+  --text3: #adb5bd;
+  --danger: #dc3545;
+  --success: #28a745;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Estilos Globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* 4. Body */
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-top: 70px;
+}
+
+/* 5. Scrollbar Personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4ca82a;
+}

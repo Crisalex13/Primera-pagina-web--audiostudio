@@ -1,0 +1,403 @@
+/* ============================================
+   components.css
+   ============================================
+
+   TABLA DE CONTENIDO
+
+   1. Galería de Productos
+      1.1 Contenedor Gallery
+
+   2. Tarjetas de Producto
+      2.1 Card
+      2.2 Imagen del Producto
+      2.3 Contenido de la Tarjeta
+      2.4 Precio y Calificación
+      2.5 Botón Agregar al Carrito
+      2.6 Badge / Etiqueta
+
+   3. Carrito de Compras
+      3.1 Sidebar del Carrito
+      3.2 Overlay
+      3.3 Header del Carrito
+      3.4 Lista de Productos
+      3.5 Item del Carrito
+      3.6 Controles de Cantidad
+      3.7 Eliminar Producto
+      3.8 Footer del Carrito
+      3.9 Total
+      3.10 Botón Checkout
+      3.11 Carrito Vacío
+      3.12 Badge del Carrito
+
+   4. Modal de Inicio de Sesión
+      4.1 Overlay Modal
+      4.2 Contenedor Modal
+      4.3 Header Modal
+      4.4 Botón Cerrar
+      4.5 Formulario
+      4.6 Campos de Entrada
+      4.7 Botón Iniciar Sesión
+      4.8 Mensaje de Ayuda
+
+   5. Estados Vacíos
+      5.1 No Results
+      5.2 Icono de No Results
+
+   ============================================ */
+
+/* 1. Galería de Productos */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* 2. Tarjetas de Producto */
+.card {
+  background: var(--card);
+  border-radius: var(--r);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-content p {
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.price-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.rating {
+  color: var(--warning);
+  font-size: 0.9rem;
+}
+
+.btn-add-to-cart {
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 0.7rem;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-add-to-cart:hover {
+  background: #4ca82a;
+  transform: scale(0.98);
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--danger);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* 3. Carrito de Compras */
+
+/* Carrito sidebar */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 360px;
+  height: 100vh;
+  background: var(--bg2);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+}
+
+.cart-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-header h3 {
+  font-size: 1.2rem;
+}
+
+.cart-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text2);
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info h4 {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.cart-item-info p {
+  font-size: 0.8rem;
+  color: var(--text2);
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  cursor: pointer;
+  color: var(--text);
+}
+
+.cart-remove-btn {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cart-item-total {
+  font-weight: 600;
+  min-width: 70px;
+  text-align: right;
+}
+
+.cart-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.cart-total {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text2);
+}
+
+.cart-badge {
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  margin-left: 5px;
+}
+
+/* 4. Modal de Inicio de Sesión */
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.login-modal-content {
+  background: var(--bg2);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.login-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text2);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text2);
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.btn-login-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.login-demo-hint {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text3);
+  font-size: 0.75rem;
+}
+
+/* 5. Estados Vacíos */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text2);
+}
+
+.no-results i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}

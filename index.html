@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="AudioStudio - Tu tienda de sonido profesional con los mejores audífonos, parlantes y micrófonos">
+<title>AudioStudio | Calidad en sonido</title>
+
+<!-- Font Awesome & Google Fonts -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<!-- Estilos CSS organizados -->
+<link rel="stylesheet" href="Estilos/base.css">
+<link rel="stylesheet" href="Estilos/header.css">
+<link rel="stylesheet" href="Estilos/components.css">
+<link rel="stylesheet" href="Estilos/sidebar.css">
+<link rel="stylesheet" href="Estilos/footer.css">
+<link rel="stylesheet" href="Estilos/responsive.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <!-- Menú hamburguesa -->
+    <!-- Menú hamburguesa -->
+<div class="list-container" id="menuContainer">
+  <button class="more-button" id="menuButton" aria-label="Menú principal" aria-expanded="false">
+    <div class="menu-icon-wrapper">
+      <div class="menu-icon-line half first"></div>
+      <div class="menu-icon-line"></div>
+      <div class="menu-icon-line half last"></div>
+    </div>
+  </button>
+  <ul class="more-button-list">
+    <li class="more-button-list-item" data-action="config">
+      <i class="fas fa-sliders-h"></i> <span>Configuración</span>
+    </li>
+    <li class="more-button-list-item" data-action="orders">
+      <i class="fas fa-shopping-bag"></i> <span>Mis pedidos</span>
+    </li>
+    <li class="more-button-list-item" data-action="wishlist">
+      <i class="fas fa-heart"></i> <span>Lista de deseos</span>
+    </li>
+    <li class="more-button-list-item" data-action="logout">
+      <i class="fas fa-sign-out-alt"></i> <span>Cerrar sesión</span>
+    </li>
+  </ul>
+</div>
+
+    <!-- Avatar / Logo -->
+    <div class="avatar-wrap">
+      <img class="logoleon" src="Imagenes/audio studio.png" alt="AudioStudio Logo">
+    </div>
+
+    <div class="logo">Audio<span>Studio</span></div>
+
+    <!-- Navegación -->
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="index.html" class="nav-link active">Catálogo</a>
+      <a href="#" class="nav-link" id="navCarritoLink">Carrito <span id="cartCount" class="cart-badge">0</span></a>
+    </nav>
+
+    <!-- Estado del usuario -->
+    <div class="status-display" id="statusDisplay">
+      <i class="fas fa-user-circle"></i>
+      <span id="userRoleText">Invitado</span>
+    </div>
+
+    <!-- Botones de acción -->
+    <button class="btn-perfil" id="btnPerfil"><i class="fas fa-user-circle"></i> Mi Perfil</button>
+    
+    <button class="btn-logout" id="logoutBtn" style="display: none;">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </button>
+
+    <button class="btn-login" id="loginBtn">
+      <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+    </button>
+  </div>
+</header>
+
+<!-- Sección Hero -->
+<section class="hero">
+  <p class="hero-label">🎧 Colección 2026</p>
+  <h1 class="hero-title">Escucha como<br>nunca antes<br><em>Calidad profesional</em></h1>
+</section>
+
+<!-- Barra de herramientas -->
+<section class="toolbar">
+  <div class="search-wrap">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Buscar producto..." aria-label="Buscar productos">
+  </div>
+  <select class="filter" id="categoryFilter" aria-label="Filtrar por categoría">
+    <option value="all">Todas las categorías</option>
+    <option value="audifonos">Audífonos</option>
+    <option value="parlantes">Parlantes</option>
+    <option value="microfonos">Micrófonos</option>
+  </select>
+  <select class="filter" id="priceFilter" aria-label="Filtrar por precio">
+    <option value="all">Todos los precios</option>
+    <option value="0-50">$0 - $50</option>
+    <option value="50-100">$50 - $100</option>
+    <option value="100-200">$100 - $200</option>
+    <option value="200+">$200+</option>
+  </select>
+</section>
+
+<!-- Galería de productos -->
+<main class="main">
+  <div class="gallery" id="productGallery">
+    <!-- Los productos se cargarán dinámicamente con JavaScript -->
+  </div>
+</main>
+
+<!-- Carrito flotante (sidebar derecho) -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-cart"></i> Mi Carrito</h3>
+    <button class="cart-close" id="cartCloseBtn">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">🛒 Tu carrito está vacío</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">Total: <span id="cartTotal">$0</span></div>
+    <button class="btn-checkout" id="checkoutBtn">Finalizar compra</button>
+  </div>
+</div>
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Audio<span>Studio</span></h2>
+      <p>Tu experiencia sonora desde 2026</p>
+    </div>
+    <div class="footer-links">
+      <h3>Enlaces</h3>
+      <a href="#">Inicio</a>
+      <a href="#">Catálogo</a>
+      <a href="#">Contacto</a>
+      <a href="#">Garantía</a>
+    </div>
+    <div class="footer-social">
+      <h3>Redes</h3>
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+    </div>
+    <div class="footer-map-col">
+      <h3><i class="fas fa-location-dot"></i> Encuéntranos</h3>
+      <div class="footer-map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.559151371361!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x6c366f0e2de02ff7!2sCiudad%20de%20M%C3%A9xico!5e0!3m2!1ses!2smx!4v1700000000000" allowfullscreen loading="lazy" aria-label="Mapa de ubicación"></iframe>
+      </div>
+      <p class="map-hint">Ciudad de México · Cambia el mapa en el código</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 AudioStudio - Hecho con <i class="fas fa-heart" style="color:#dc2626"></i> para amantes del sonido</p>
+  </div>
+</footer>
+
+<!-- Sidebar de Configuración -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Configuración</h3>
+    <button class="sidebar-close" id="closeSidebar">&times;</button>
+  </div>
+  <div class="sidebar-content">
+    <div class="settings-item">
+      <span class="settings-label">
+        <i class="fas fa-palette"></i> Tema
+      </span>
+      <div class="theme-toggle-sidebar" id="themeToggleSidebar">
+        <span class="theme-option active" data-theme="light">
+          <i class="fas fa-sun"></i> Día
+        </span>
+        <div class="slider-indicator"></div>
+        <span class="theme-option" data-theme="dark">
+          <i class="fas fa-moon"></i> Noche
+        </span>
+      </div>
+    </div>
+    
+    <div class="settings-item">
+      <span class="settings-label">
+        <i class="fas fa-language"></i> Idioma
+      </span>
+      <select class="settings-select" id="languageSelect">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    
+    <div class="settings-item">
+      <span class="settings-label">
+        <i class="fas fa-bell"></i> Notificaciones
+      </span>
+      <label class="switch">
+        <input type="checkbox" id="notificationsToggle" checked>
+        <span class="slider-small round"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Scripts -->
+<script src="Comportamientos/data/products.js"></script>
+<script src="Comportamientos/theme.js"></script>
+<script src="Comportamientos/cart.js"></script>
+<script src="Comportamientos/session.js"></script>
+<script src="Comportamientos/menu.js"></script>
+<script src="Comportamientos/filters.js"></script>
+<script src="Comportamientos/main.js"></script>
+
+</body>
+</html>
