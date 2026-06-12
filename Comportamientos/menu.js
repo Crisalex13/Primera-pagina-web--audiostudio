@@ -1,31 +1,66 @@
 /* ============================================
-   menu.js 
+   menu.js
    ============================================
-   1.
+   TABLA DE CONTENIDO
+   ============================================
+   1. Menú Hamburguesa
+      1.1 Declaración de elementos del DOM
+      1.2 Abrir/Cerrar menú con click
+      1.3 Cerrar menú al hacer click fuera
+      1.4 Cerrar menú con tecla ESC
+
+   2. Acciones del Menú
+      2.1 Acción: Configuración (abrir sidebar)
+      2.2 Acción: Mis pedidos (alert)
+      2.3 Acción: Lista de deseos (alert)
+      2.4 Acción: Cerrar sesión
+      2.5 Cerrar menú después de seleccionar
+
+   3. Sidebar de Configuración
+      3.1 Cerrar sidebar con botón X
+      3.2 Cerrar sidebar con overlay
+      3.3 Evitar propagación de eventos en sidebar
+
+   4. Gestión de Temas
+      4.1 Declaración de elementos del tema
+      4.2 Función: updateSidebarThemeUI
+      4.3 Función: loadThemeInSidebar
+      4.4 Función: setThemeFromSidebar
+      4.5 Evento: click en opciones de tema
+      4.6 Evento: click en toggle de tema
+
+   5. Configuración General
+      5.1 Declaración de elementos de configuración
+      5.2 Función: Cambio de idioma
+      5.3 Función: Preferencias de notificaciones
+
+   6. Inicialización
+      6.1 Cargar tema guardado
+
    ============================================ */
 
-// 1. Menú Hamburguesa 
+// 1. Menú Hamburguesa
+// 1.1 Declaración de elementos del DOM
 const menuBtn = document.getElementById('menuButton');
 const menuContainer = document.getElementById('menuContainer');
 const sidebar = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
 const closeSidebarBtn = document.getElementById('closeSidebar');
 
-// ========== ABRIR/CERRAR MENÚ HAMBURGUESA ==========
+// 1.2 Abrir/Cerrar menú con click
 if (menuBtn && menuContainer) {
   menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     e.preventDefault();
     menuContainer.classList.toggle('active');
     
-    // MEJORA 1: Atributo aria-expanded para accesibilidad
     const isExpanded = menuContainer.classList.contains('active');
     menuBtn.setAttribute('aria-expanded', isExpanded);
     
     console.log('Menú clickeado, clase active:', menuContainer.classList.contains('active'));
   });
 
-  // MEJORA 2: Cerrar al hacer click fuera
+  // 1.3 Cerrar menú al hacer click fuera
   document.addEventListener('click', (e) => {
     if (menuContainer && !menuContainer.contains(e.target)) {
       menuContainer.classList.remove('active');
@@ -33,7 +68,7 @@ if (menuBtn && menuContainer) {
     }
   });
   
-  // MEJORA 3: Cerrar con tecla ESC
+  // 1.4 Cerrar menú con tecla ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menuContainer.classList.contains('active')) {
       menuContainer.classList.remove('active');
@@ -42,52 +77,48 @@ if (menuBtn && menuContainer) {
   });
 }
 
-// 2. Acciones del Menú (MEJORADAS)
+// 2. Acciones del Menú
 document.querySelectorAll('.more-button-list-item').forEach(item => {
   item.addEventListener('click', (e) => {
     e.stopPropagation();
     const action = item.dataset.action;
     
     switch(action) {
+      // 2.1 Acción: Configuración (abrir sidebar)
       case 'config':
-        // MEJORA 4: Usar la clase que ya tiene tu CSS
-        if (sidebar) sidebar.classList.add('open');  // ← USA 'open' como tu CSS original
+        if (sidebar) sidebar.classList.add('open');
         if (sidebarOverlay) sidebarOverlay.classList.add('active');
         break;
+      
+      // 2.2 Acción: Mis pedidos (alert)
       case 'orders':
-        // MEJORA 5: Confirmación más amigable
-        Swal.fire?.({
-          title: '📦 Mis Pedidos',
-          text: 'Funcionalidad en desarrollo',
-          icon: 'info',
-          confirmButtonColor: '#5fc234'
-        }) || alert('📦 Tus pedidos próximamente');
+        alert('📦 Tus pedidos próximamente');
         break;
+      
+      // 2.3 Acción: Lista de deseos (alert)
       case 'wishlist':
-        Swal.fire?.({
-          title: '❤️ Lista de Deseos',
-          text: 'Funcionalidad en desarrollo',
-          icon: 'info',
-          confirmButtonColor: '#5fc234'
-        }) || alert('❤️ Tu lista de deseos próximamente');
+        alert('❤️ Tu lista de deseos próximamente');
         break;
+      
+      // 2.4 Acción: Cerrar sesión
       case 'logout':
-        // MEJORA 6: Confirmación antes de cerrar sesión
         if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
           const logoutBtn = document.getElementById('logoutBtn');
           if (logoutBtn) logoutBtn.click();
         }
         break;
+      
       default:
         console.log(`📌 Seleccionaste: ${item.querySelector('span')?.innerText || 'opción'}`);
     }
     
-    // Cerrar menú después de seleccionar
+    // 2.5 Cerrar menú después de seleccionar
     if (menuContainer) menuContainer.classList.remove('active');
   });
 });
 
-// 3. Sidebar de Configuración (MANTIENE TU CÓDIGO ORIGINAL)
+// 3. Sidebar de Configuración
+// 3.1 Cerrar sidebar con botón X
 if (closeSidebarBtn) {
   closeSidebarBtn.addEventListener('click', () => {
     if (sidebar) sidebar.classList.remove('open');
@@ -95,6 +126,7 @@ if (closeSidebarBtn) {
   });
 }
 
+// 3.2 Cerrar sidebar con overlay
 if (sidebarOverlay) {
   sidebarOverlay.addEventListener('click', () => {
     if (sidebar) sidebar.classList.remove('open');
@@ -102,14 +134,17 @@ if (sidebarOverlay) {
   });
 }
 
+// 3.3 Evitar propagación de eventos en sidebar
 if (sidebar) {
   sidebar.addEventListener('click', (e) => e.stopPropagation());
 }
 
-// 4. Gestión de Temas (MEJORADA)
+// 4. Gestión de Temas
+// 4.1 Declaración de elementos del tema
 const themeToggleSidebar = document.getElementById('themeToggleSidebar');
 const themeOptions = document.querySelectorAll('.theme-option');
 
+// 4.2 Función: updateSidebarThemeUI
 function updateSidebarThemeUI(theme) {
   themeOptions.forEach(opt => {
     if (opt.getAttribute('data-theme') === theme) {
@@ -124,12 +159,14 @@ function updateSidebarThemeUI(theme) {
   }
 }
 
+// 4.3 Función: loadThemeInSidebar
 function loadThemeInSidebar() {
   const savedTheme = localStorage.getItem('theme');
   const currentTheme = savedTheme === 'light' ? 'light' : 'dark';
   updateSidebarThemeUI(currentTheme);
 }
 
+// 4.4 Función: setThemeFromSidebar
 function setThemeFromSidebar(theme) {
   if (typeof setTheme === 'function') {
     setTheme(theme === 'light');
@@ -137,6 +174,7 @@ function setThemeFromSidebar(theme) {
   updateSidebarThemeUI(theme);
 }
 
+// 4.5 Evento: click en opciones de tema
 if (themeOptions.length > 0) {
   themeOptions.forEach(option => {
     option.addEventListener('click', (e) => {
@@ -147,6 +185,7 @@ if (themeOptions.length > 0) {
   });
 }
 
+// 4.6 Evento: click en toggle de tema
 if (themeToggleSidebar) {
   themeToggleSidebar.addEventListener('click', (e) => {
     if (!e.target.classList.contains('theme-option')) {
@@ -157,10 +196,13 @@ if (themeToggleSidebar) {
   });
 }
 
-// 5. Configuración General (MEJORADA)
+// 5. Configuración General
+// 5.1 Declaración de elementos de configuración
 const languageSelect = document.getElementById('languageSelect');
+const notificationsToggle = document.getElementById('notificationsToggle');
+
+// 5.2 Función: Cambio de idioma
 if (languageSelect) {
-  // Cargar idioma guardado
   const savedLanguage = localStorage.getItem('language') || 'es';
   languageSelect.value = savedLanguage;
   
@@ -168,11 +210,10 @@ if (languageSelect) {
     const selectedLang = e.target.value;
     localStorage.setItem('language', selectedLang);
     console.log(`🌐 Idioma cambiado a: ${selectedLang === 'es' ? 'Español' : 'English'}`);
-    // Aquí puedes implementar el cambio de idioma real
   });
 }
 
-const notificationsToggle = document.getElementById('notificationsToggle');
+// 5.3 Función: Preferencias de notificaciones
 if (notificationsToggle) {
   const savedNotifications = localStorage.getItem('notifications');
   if (savedNotifications === 'false') {
@@ -185,7 +226,6 @@ if (notificationsToggle) {
     localStorage.setItem('notifications', e.target.checked);
     console.log(`🔔 Notificaciones: ${e.target.checked ? 'Activadas' : 'Desactivadas'}`);
     
-    // Solicitar permiso de notificaciones si está activado
     if (e.target.checked && 'Notification' in window) {
       if (Notification.permission === 'default') {
         Notification.requestPermission();
@@ -195,6 +235,5 @@ if (notificationsToggle) {
 }
 
 // 6. Inicialización
+// 6.1 Cargar tema guardado
 loadThemeInSidebar();
-
-console.log('✅ Menú y configuración inicializados correctamente');
