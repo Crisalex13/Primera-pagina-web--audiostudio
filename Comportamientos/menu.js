@@ -11,7 +11,7 @@ const sidebar = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
 const closeSidebarBtn = document.getElementById('closeSidebar');
 
-// ========== ABRIR/CERRAR MENÚ HAMBURGUESA (MEJORADO) ==========
+// ========== ABRIR/CERRAR MENÚ HAMBURGUESA ==========
 if (menuBtn && menuContainer) {
   menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
