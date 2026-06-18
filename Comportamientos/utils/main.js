@@ -110,13 +110,16 @@ function renderizarProductosConDatos(datos) {
       e.preventDefault();
       e.stopPropagation();
 
+      // ⚠️ Obtener el ID (puede ser _id o id)
       const productId = this.dataset.id;
-      const product = datos.find(p => (p.id || p._id) == productId);
+      const product = datos.find(p => (p._id || p.id) == productId);
 
       if (product) {
-        showAddToCartNotification(product.name);
+        // Pasar el producto completo a addToCart
         if (typeof addToCart === 'function') {
           addToCart(product);
+        } else {
+          console.error('❌ addToCart no está definida');
         }
       }
     });
