@@ -1,8 +1,8 @@
-/* ============================================
+/* ============================================================
    sidebar.css
-   ============================================
+   ============================================================
    TABLA DE CONTENIDO
-   ============================================
+   ============================================================
    1. Sidebar de Configuración
       1.1 Contenedor Sidebar
       1.2 Estado Abierto
@@ -33,10 +33,9 @@
 
    5. Select Personalizado
       5.1 Selector de Opciones
+   ============================================================ */
 
-   ============================================ */
-
-/* 1. Sidebar de Configuración */
+/* ── 1. Sidebar de Configuración ── */
 .sidebar {
   position: fixed;
   top: 0;
@@ -110,7 +109,7 @@
   gap: 1.5rem;
 }
 
-/* 2. Opciones de Configuración */
+/* ── 2. Opciones de Configuración ── */
 .settings-item {
   display: flex;
   justify-content: space-between;
@@ -132,7 +131,7 @@
   color: var(--accent);
 }
 
-/* 3. Selector de Tema */
+/* ── 3. Selector de Tema ── */
 .theme-toggle-sidebar {
   position: relative;
   display: flex;
@@ -179,7 +178,7 @@
   transform: translateX(100%);
 }
 
-/* 4. Switch Personalizado */
+/* ── 4. Switch Personalizado ── */
 .switch {
   position: relative;
   display: inline-block;
@@ -225,7 +224,7 @@ input:checked + .slider-small:before {
   transform: translateX(22px);
 }
 
-/* 5. Select Personalizado */
+/* ── 5. Select Personalizado ── */
 .settings-select {
   background: var(--bg3);
   border: 1px solid var(--border);

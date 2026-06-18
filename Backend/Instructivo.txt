@@ -1,0 +1,19 @@
+1.1 Inicializar el proyecto
+# Crear carpeta del backend
+mkdir backend
+
+# Entrar a la carpeta
+cd backend
+
+# Inicializar package.json
+npm init -y
+
+1.2 Instalar dependencias
+# Dependencias principales
+npm install express mongoose cors dotenv
+
+# Dependencia de desarrollo (nodemon)
+npm install -D nodemon
+
+1.3 Ejecutar el programa para siempre con nodemon:
+npm run dev 

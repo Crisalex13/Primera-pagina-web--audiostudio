@@ -1,0 +1,661 @@
+/* ============================================================
+   admin.css - Estilos del Panel de Administración
+   ============================================================
+   TABLA DE CONTENIDO
+   ============================================================
+   1. Panel de Administración
+      1.1 Contenedor principal
+      1.2 Overlay
+      1.3 Contenido del Panel
+      1.4 Header del Panel
+      1.5 Botón Cerrar
+      1.6 Cuerpo del Panel
+
+   2. Estadísticas (Dashboard)
+      2.1 Contenedor de Stats
+      2.2 Tarjeta de Stat
+      2.3 Número
+      2.4 Etiqueta
+
+   3. Formulario de Productos
+      3.1 Sección del Formulario
+      3.2 Título del Formulario
+      3.3 Filas del Formulario
+      3.4 Grupos del Formulario
+      3.5 Inputs y Textareas
+      3.6 Selects
+      3.7 Acciones del Formulario
+      3.8 Botón Guardar
+      3.9 Botón Cancelar
+
+   4. Tabla de Productos
+      4.1 Sección de Tabla
+      4.2 Wrapper de Tabla
+      4.3 Tabla
+      4.4 Cabecera
+      4.5 Celdas
+      4.6 Badge de Categoría
+      4.7 Botones de Acción
+      4.8 Botón Editar
+      4.9 Botón Eliminar
+
+   5. Notificaciones (Toast)
+      5.1 Contenedor
+      5.2 Animación
+
+   6. Selector de Imágenes
+      6.1 Contenedor
+      6.2 Preview
+      6.3 Estados
+      6.4 Botones
+      6.5 Responsive
+      6.6 Animaciones suaves
+
+   7. RESPONSIVE
+   ============================================================ */
+
+/* ──────────────────────────────────────────────────────────────
+   1. PANEL DE ADMINISTRACIÓN
+   ────────────────────────────────────────────────────────────── */
+
+.admin-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  display: none;
+}
+
+.admin-panel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.admin-panel-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  max-height: 90vh;
+  margin: 2rem auto;
+  background: var(--bg2);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3);
+  flex-shrink: 0;
+}
+
+.admin-panel-header h2 {
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.admin-panel-header h2 i {
+  color: #f59e0b;
+  margin-right: 10px;
+}
+
+.admin-close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text2);
+  transition: 0.2s;
+  line-height: 1;
+}
+
+.admin-close-btn:hover {
+  color: var(--danger);
+  transform: rotate(90deg);
+}
+
+.admin-panel-body {
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   2. ESTADÍSTICAS (DASHBOARD)
+   ────────────────────────────────────────────────────────────── */
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s;
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+}
+
+.stat-card i {
+  font-size: 2rem;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   3. FORMULARIO DE PRODUCTOS
+   ────────────────────────────────────────────────────────────── */
+
+.admin-form-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-form-section h3 {
+  margin-bottom: 1.2rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text2);
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(95, 194, 52, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-save {
+  padding: 10px 24px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-save:hover {
+  background: #4ca82a;
+  transform: scale(0.98);
+}
+
+.btn-cancel {
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   4. TABLA DE PRODUCTOS
+   ────────────────────────────────────────────────────────────── */
+
+.admin-table-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.admin-table-section h3 {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+#adminProductsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+#adminProductsTable th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--bg3);
+  color: var(--text2);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border);
+}
+
+#adminProductsTable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+#adminProductsTable tr:hover td {
+  background: var(--bg3);
+}
+
+#adminProductsTable td img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 40px;
+  background: var(--bg3);
+  font-size: 0.75rem;
+  color: var(--text2);
+}
+
+.btn-edit,
+.btn-delete {
+  border: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: 0.2s;
+  margin: 2px;
+}
+
+.btn-edit {
+  background: var(--accent2);
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #0d7fc9;
+}
+
+.btn-delete {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #e04444;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   5. NOTIFICACIONES (TOAST)
+   ────────────────────────────────────────────────────────────── */
+
+.admin-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  z-index: 10000;
+  font-weight: 600;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.admin-toast.success {
+  background: var(--success);
+  color: #1a1a2e;
+}
+
+.admin-toast.error {
+  background: var(--danger);
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   6. SELECTOR DE IMÁGENES
+   ────────────────────────────────────────────────────────────── */
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.image-preview {
+  width: 100%;
+  max-width: 300px;
+  min-height: 180px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--bg3);
+  position: relative;
+  overflow: hidden;
+}
+
+.image-preview:hover {
+  border-color: var(--accent);
+  background: var(--bg2);
+}
+
+.image-preview.dragover {
+  border-color: var(--accent);
+  background: rgba(95, 194, 52, 0.1);
+  transform: scale(1.02);
+}
+
+.image-preview i {
+  font-size: 3rem;
+  color: var(--text3);
+  margin-bottom: 8px;
+}
+
+.image-preview p {
+  color: var(--text2);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-preview.has-image i,
+.image-preview.has-image p {
+  display: none;
+}
+
+.image-preview.has-image {
+  border-style: solid;
+  min-height: 200px;
+  padding: 0;
+  cursor: default;
+}
+
+.image-preview.has-image:hover {
+  border-color: var(--accent);
+}
+
+.btn-upload {
+  padding: 8px 20px;
+  background: var(--accent2);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-upload:hover {
+  background: #0d7fc9;
+  transform: scale(0.98);
+}
+
+.btn-remove-image {
+  padding: 8px 20px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-remove-image:hover {
+  background: #e04444;
+  transform: scale(0.98);
+}
+
+.upload-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   6.6 ACTUALIZACIONES SIN PARPADEOS
+   ────────────────────────────────────────────────────────────── */
+
+/* Contenedor de la tabla con altura fija para evitar saltos */
+.table-wrapper {
+  position: relative;
+  min-height: 200px;
+  transition: opacity 0.2s ease;
+}
+
+/* Filas de la tabla con animación suave */
+#adminProductsTable tbody tr {
+  transition: all 0.2s ease;
+}
+
+#adminProductsTable tbody tr:hover {
+  background: var(--bg3);
+}
+
+/* Animación de entrada para nuevas filas */
+@keyframes rowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#adminProductsTable tbody tr {
+  animation: rowFadeIn 0.25s ease forwards;
+}
+
+/* Estilo para cuando se está actualizando */
+.table-wrapper.updating {
+  opacity: 0.7;
+}
+
+/* Contador de productos sin animación brusca */
+.stat-number {
+  transition: all 0.2s ease;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   7. RESPONSIVE
+   ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .admin-panel-content {
+    max-height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%;
+  }
+
+  .admin-panel-body {
+    padding: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #adminProductsTable {
+    font-size: 0.75rem;
+  }
+
+  #adminProductsTable th,
+  #adminProductsTable td {
+    padding: 6px 8px;
+  }
+
+  #adminProductsTable td img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    padding: 2px 8px;
+    font-size: 0.65rem;
+  }
+
+  .image-preview {
+    max-width: 100%;
+    min-height: 150px;
+  }
+
+  .image-preview i {
+    font-size: 2rem;
+  }
+
+  .btn-upload,
+  .btn-remove-image {
+    padding: 6px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-panel-header h2 {
+    font-size: 1rem;
+  }
+
+  .admin-panel-body {
+    padding: 0.8rem;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+}

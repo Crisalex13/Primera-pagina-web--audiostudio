@@ -1,9 +1,8 @@
-/* ============================================
+/* ============================================================
    components.css
-   ============================================
-
+   ============================================================
    TABLA DE CONTENIDO
-
+   ============================================================
    1. Galería de Productos
       1.1 Contenedor Gallery
 
@@ -42,10 +41,9 @@
    5. Estados Vacíos
       5.1 No Results
       5.2 Icono de No Results
+   ============================================================ */
 
-   ============================================ */
-
-/* 1. Galería de Productos */
+/* ── 1. Galería de Productos ── */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -55,7 +53,7 @@
   margin: 0 auto;
 }
 
-/* 2. Tarjetas de Producto */
+/* ── 2. Tarjetas de Producto ── */
 .card {
   background: var(--card);
   border-radius: var(--r);
@@ -149,9 +147,7 @@
   z-index: 2;
 }
 
-/* 3. Carrito de Compras */
-
-/* Carrito sidebar */
+/* ── 3. Carrito de Compras ── */
 .cart-sidebar {
   position: fixed;
   top: 0;
@@ -313,7 +309,7 @@
   margin-left: 5px;
 }
 
-/* 4. Modal de Inicio de Sesión */
+/* ── 4. Modal de Inicio de Sesión ── */
 .login-modal {
   position: fixed;
   top: 0;
@@ -390,7 +386,7 @@
   font-size: 0.75rem;
 }
 
-/* 5. Estados Vacíos */
+/* ── 5. Estados Vacíos ── */
 .no-results {
   text-align: center;
   padding: 3rem;
